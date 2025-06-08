@@ -1,0 +1,38 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub/
+build/
+.idea/
+.svn/
+*.lock
+*.iml
+
+# IDEs and editors
+.vscode/
+*.swp
+
+# macOS
+.DS_Store
+
+# Android/iOS native
+android/.gradle/
+android/captures/
+ios/Flutter/Generated.xcconfig
+ios/.generated/
+ios/Pods/
+macos/Pods/
+*.xcworkspace
+*.xcuserstate
+*.xcuserdatad
+
+# Web build output
+web/.dart_tool/
+web/.idea/
+web/build/
+
+# Others
+*.log
+*.tmp
+*.bak
+*.old
