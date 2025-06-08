@@ -5,7 +5,7 @@ class MTextCenter extends StatelessWidget {
   final String text;
   final TextStyle? style;
 
-  const MTextCenter({super.key, required this.text, this.style});
+  const MTextCenter(this.text, {super.key, this.style});
 
   @override
   Widget build(BuildContext context) {
