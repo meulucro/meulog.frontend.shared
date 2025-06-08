@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meulog_frontend_components/theme/app_colors.dart';
+import 'app_colors.dart';
 
 class AppTheme {
   static final ThemeData theme = ThemeData(

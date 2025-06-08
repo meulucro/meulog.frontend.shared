@@ -1,6 +1,6 @@
-# 📦 meulog_frontend_components
+# 📦 meulog_shared
 
-Pacote de componentes Flutter reutilizáveis para o ecossistema Meulog. Este projeto foi criado para padronizar elementos visuais e interativos entre os apps Web e Mobile.
+Pacote compartilhado Flutter para o ecossistema Meulog. Contém componentes visuais, estilos, utilitários, enums e modelos reutilizáveis entre os apps Web e Mobile.
 
 Criado por [Fernando-Braulio](https://github.com/Fernando-Braulio)
 
@@ -8,7 +8,7 @@ Criado por [Fernando-Braulio](https://github.com/Fernando-Braulio)
 
 ## 🚀 Objetivo
 
-Este pacote centraliza componentes visuais como botões, campos de texto, scaffolds e dialogs, para manter consistência e facilitar manutenção e evolução visual.
+Centralizar código reutilizável (UI e lógica leve) para manter consistência visual e técnica entre projetos Flutter.
 
 ---
 
@@ -20,10 +20,13 @@ Este pacote inclui um projeto `example/` que pode ser executado via Flutter Web 
 flutter run -d chrome --target=example/main.dart
 ```
 
-## 📁 Estrutura Atual
+## 📁 Estrutura Modular
 
-- `MButton` → botão padrão estilizado
-- `MTextField` → campo de texto com borda arredondada e padding
+- `components/` → botões, inputs, widgets reutilizáveis
+- `theme/` → cores, estilos de texto, padding, decorações
+- `utils/` → helpers como espaçamentos
+- `models/` → modelos de dados globais
+- `enums/` → enumerações compartilhadas
 
 ---
 
@@ -35,9 +38,9 @@ No seu `pubspec.yaml` de outro projeto:
 
 ```yaml
 dependencies:
-  meulog_frontend_components:
+  meulog_shared:
     git:
-      url: git@github.com:meulucro/meulog.frontend.components.git
+      url: git@github.com:meulucro/meulog.frontend.shared.git
 ```
 
 > ⚠️ Repositório precisa ser privado e o acesso deve estar configurado com SSH ou token.
@@ -48,8 +51,8 @@ dependencies:
 
 ```yaml
 dependencies:
-  meulog_frontend_components:
-    path: ../meulog.frontend.components
+  meulog_shared:
+    path: ../meulog.frontend.shared
 ```
 
 ---
@@ -57,12 +60,9 @@ dependencies:
 ## ✅ Como Importar
 
 ```dart
-import 'package:meulog_frontend_components/m_components.dart';
-
-...
-
-MButton(label: 'Salvar', onPressed: () => print('Clique'));
-MTextField(label: 'Nome', controller: TextEditingController());
+import 'package:meulog_shared/components.dart';
+import 'package:meulog_shared/theme.dart';
+import 'package:meulog_shared/utils.dart';
 ```
 
 ---

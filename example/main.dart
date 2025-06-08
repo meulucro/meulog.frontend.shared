@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meulog_frontend_components/m_components.dart';
+import 'package:meulog_shared/meulog_shared.dart';
 
 void main() => runApp(const ComponentPreviewApp());
 
