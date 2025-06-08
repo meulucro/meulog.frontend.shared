@@ -2,7 +2,7 @@ library;
 
 // Components
 export 'components/m_button.dart';
-// export 'components/m_text_field.dart';
+export 'components/m_text_center.dart';
 
 // Styles
 export 'theme/app_button_styles.dart';

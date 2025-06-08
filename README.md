@@ -37,7 +37,7 @@ No seu `pubspec.yaml` de outro projeto:
 dependencies:
   meulog_frontend_components:
     git:
-      url: git@github.com:seu-usuario/meulog.frontend.components.git
+      url: git@github.com:meulucro/meulog.frontend.components.git
 ```
 
 > ⚠️ Repositório precisa ser privado e o acesso deve estar configurado com SSH ou token.
@@ -57,7 +57,7 @@ dependencies:
 ## ✅ Como Importar
 
 ```dart
-import 'package:meulog_frontend_components/meulog_components.dart';
+import 'package:meulog_frontend_components/m_components.dart';
 
 ...
 
