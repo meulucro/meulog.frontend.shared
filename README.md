@@ -17,8 +17,7 @@ Este pacote centraliza componentes visuais como botões, campos de texto, scaffo
 Este pacote inclui um projeto `example/` que pode ser executado via Flutter Web para pré-visualização dos componentes.
 
 ```bash
-cd example
-flutter run -d chrome
+flutter run -d chrome --target=example/main.dart
 ```
 
 ## 📁 Estrutura Atual
