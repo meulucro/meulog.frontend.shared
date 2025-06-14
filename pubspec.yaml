@@ -11,6 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  timezone:
+  intl:
+  intl_translation:
+
 dev_dependencies:
   flutter_lints: ^5.0.0
 
