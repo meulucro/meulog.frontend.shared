@@ -14,4 +14,6 @@ enum UserRole implements EnumWithLabel {
   final String label;
 
   const UserRole(this.value, this.label);
+
+  static List<UserRole> get visibleValues => UserRole.values.where((role) => role != UserRole.System).toList();
 }
