@@ -14,3 +14,8 @@ extension BrazilTimeZoneExtension on DateTime {
     return tz.TZDateTime.from(this, brazilTimeZone);
   }
 }
+
+DateTime nowInBrazil() {
+  final sp = tz.getLocation('America/Sao_Paulo');
+  return tz.TZDateTime.now(sp);
+}
