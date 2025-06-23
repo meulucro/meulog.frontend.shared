@@ -19,25 +19,53 @@ extension DateTimeIsoOffsetExtension on DateTime? {
   String? formatDateWithIsoOffset() {
     if (this == null) return null;
 
-    final isoString = this!.toIso8601String();
+    // Já gera o ISO sem offset ou Z no final
+    var baseIso = this!.toIso8601String();
 
-    // Se já está no formato correto com offset (ex: termina com -03:00 ou +00:00 ou Z)
-    if (RegExp(r'([+-]\d{2}:\d{2}|Z)$').hasMatch(isoString)) {
-      return isoString;
-    }
+    // Remove qualquer offset já presente (ex: -0300, -03:00, +00:00, Z)
+    baseIso = baseIso.replaceAll(RegExp(r'([+-]\d{2}:\d{2}|[+-]\d{4}|Z)$'), '');
 
-    // Caso não tenha offset no formato, adiciona o offset correto
+    // Calcula o offset correto
     final duration = this!.timeZoneOffset;
     final sign = duration.isNegative ? '-' : '+';
     final hours = duration.inHours.abs().toString().padLeft(2, '0');
     final minutes = (duration.inMinutes.abs() % 60).toString().padLeft(2, '0');
     final offset = '$sign$hours:$minutes';
 
-    return '$isoString$offset';
+    return '$baseIso$offset';
   }
 }
 
 DateTime nowInBrazil() {
   final sp = tz.getLocation('America/Sao_Paulo');
   return tz.TZDateTime.now(sp);
+}
+
+DateTime? parseAsBrazilTime(String? dateString) {
+  if (dateString == null) return null;
+
+  // Verifica se a string contém offset ou Z
+  final hasOffset = RegExp(r'([+-]\d{2}:\d{2}|Z)$').hasMatch(dateString);
+
+  if (hasOffset) {
+    // Já tem timezone na string, pode parsear normalmente
+    return DateTime.parse(dateString);
+  }
+
+  // Não tem offset, vamos assumir São Paulo
+  final parsed = DateTime.parse(dateString);
+  final location = tz.getLocation('America/Sao_Paulo');
+  final tzDate = tz.TZDateTime(
+    location,
+    parsed.year,
+    parsed.month,
+    parsed.day,
+    parsed.hour,
+    parsed.minute,
+    parsed.second,
+    parsed.millisecond,
+    parsed.microsecond,
+  );
+
+  return tzDate;
 }
