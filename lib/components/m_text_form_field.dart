@@ -87,7 +87,7 @@ class _MTextFormFieldState extends State<MTextFormField> {
       onChanged: widget.onChanged,
       validator: widget.validator,
       autovalidateMode: widget.autovalidateMode,
-      initialValue: widget.controller == null ? widget.initialValue : widget.controller!.text,
+      initialValue: widget.controller == null ? widget.initialValue : null,
       enabled: widget.enabled,
       focusNode: widget.focusNode,
       onFieldSubmitted: widget.onFieldSubmitted,
