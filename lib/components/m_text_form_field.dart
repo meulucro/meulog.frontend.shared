@@ -20,6 +20,7 @@ class MTextFormField extends StatefulWidget {
   final FocusNode? focusNode;
   final void Function(String value)? onFieldLostFocus;
   final void Function(String?)? onFieldSubmitted;
+  final String? initialValue;
 
   const MTextFormField({
     super.key,
@@ -39,6 +40,7 @@ class MTextFormField extends StatefulWidget {
     this.focusNode,
     this.onFieldLostFocus,
     this.onFieldSubmitted,
+    this.initialValue,
   });
 
   @override
@@ -85,6 +87,7 @@ class _MTextFormFieldState extends State<MTextFormField> {
       onChanged: widget.onChanged,
       validator: widget.validator,
       autovalidateMode: widget.autovalidateMode,
+      initialValue: widget.controller == null ? widget.initialValue : widget.controller!.text,
       enabled: widget.enabled,
       focusNode: widget.focusNode,
       onFieldSubmitted: widget.onFieldSubmitted,
@@ -99,9 +102,7 @@ class _MTextFormFieldState extends State<MTextFormField> {
                 icon: Icon(_obscureText ? Icons.visibility : Icons.visibility_off, color: AppColors.neutralDark200),
                 onPressed: _toggleObscureText,
               )
-            : widget.suffixIcon != null
-            ? widget.suffixIcon
-            : null,
+            : widget.suffixIcon,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide: const BorderSide(color: AppColors.neutralLight500, width: 1.0),
